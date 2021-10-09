@@ -22,7 +22,7 @@ public class ArakhshScript : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetMouseButtonDown(1))
+        if (Input.GetMouseButtonDown(1) && !isCasting)
         {
             target = Manager.instance.mousePos;
             agent.SetDestination(target);
@@ -46,6 +46,7 @@ public class ArakhshScript : MonoBehaviour
 
     private IEnumerator SpawnQ()
     {
+        isCasting=true;
         anim.SetBool("Walk", false);
         anim.SetTrigger("Q");
         SetRot();
@@ -53,17 +54,19 @@ public class ArakhshScript : MonoBehaviour
         agent.SetDestination(transform.position);
         yield return new WaitForSeconds(q.length / 2);
         ability1.Spawn();
-
+        isCasting=false;
     }
 
     private IEnumerator SpawnW()
     {
+        isCasting=true;
         anim.SetBool("Walk", false);
         anim.SetTrigger("W");
         SetRot();
         agent.SetDestination(transform.position);
         yield return new WaitForSeconds(w.length / 2);
         ability2.Spawn(Manager.instance.mousePos);
+        isCasting=false;
     }
 
     private async Task WaitForAnim(float time)
