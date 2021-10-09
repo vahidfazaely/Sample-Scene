@@ -1,0 +1,10 @@
+walk : 15 -35
+run : 40 - 56
+die : 65 - 95
+idle : 110 - 185
+attack : 190 - 218
+recall : 225 -350
+lightning bullet : 360 - 387
+lightning : 400 - 433
+water : 440 - 466
+ red lightnings : 470 - 550
